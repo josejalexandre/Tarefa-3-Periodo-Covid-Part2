@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <caixas/>
+    <ferramentas @alteraCor="alteraCor($event)" @alterouTexto="alteraTexto($event)"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Caixas from "./components/Caixas.vue"
+import Ferramentas from "./components/Ferramentas.vue"
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Caixas, Ferramentas
+  }, 
+  data: function() {
+    return{
+    }
+  }, methods:{
+    alteraCor: function(event){
+      this.caixinhas[event.caixa].cor = event.cor
+    },
+    alteraTexto: function(event){
+      this.caixinhas[event.caixa].titulo = event.titulo
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+</style>  
